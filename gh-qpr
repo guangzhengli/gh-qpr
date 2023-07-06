@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -e
+
+echo "Hello gh-qpr!"
+
+branch=$(git rev-parse --abbrev-ref HEAD)
+echo "Current branch is $branch"
+
+branch_name=$(uuidgen | tr '[:upper:]' '[:lower:]')
+echo "Generate a rondom branch name: $branch_name"
+
+echo "git create a new branch...: $branch_name"
+git checkout -b $branch_name
+
+echo "gh create a new pull requestion with label migration and need review..."
+
+echo "current pr labels: $gh_qpr_labels"
+
+if [ -z "$gh_qpr_labels" ]; then
+  gh pr create -f --base $branch -l "$gh_qpr_labels"
+else
+  gh pr create -f --base $branch
+fi
+
+echo "start gh merge..."
+gh pr merge --rebase
+
+echo "git checkout to $branch"
+git checkout $branch
+
+echo "git delete local branch: $branch_name"
+git branch -D $branch_name
+
+echo "git delete origin branch: $branch_name"
+git push origin --delete $branch_name
+
+echo "git pull oringin $branch"
+git pull --rebase
