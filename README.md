@@ -19,14 +19,21 @@ The default labels are empty. You can change it by setting the environment varia
 brew install gh
 ```
 
-## 2. Login to GitHub with tw account
+## 2. Login to GitHub with account
 
 ```bash
 gh auth login
 ```
 
-## 3. Add the shell script environment to your path (Optional)
+## 3. Download the gh-qpr extension
 
+```bash
+gh extension install guangzhengli/gh-qpr
+```
+
+## 4. Add the shell script environment to your path (Optional)
+
+replace the `migration,need review` with your labels.
 
 ```bash
 vim ~/.zshrc
