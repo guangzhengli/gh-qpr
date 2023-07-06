@@ -1,5 +1,17 @@
 # How to use gh qpr to create a pull request with labels quickly
 
+## Use
+
+```bash
+gh qpr
+```
+
+It will create a pull request with labels quickly to the origin/current-branch based on current branch.
+
+The default labels are empty. You can change it by setting the environment variable `gh_qpr_labels`.
+
+It will create a new rondom branch and push it to remote. then create a pr and delete the local and origin branch. Finally, it will go back to the original branch.
+
 ## 1. Install the gh command
 
 ```bash
