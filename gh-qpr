@@ -15,10 +15,11 @@ git checkout -b $branch_name
 echo "gh create a new pull requestion with label migration and need review..."
 
 if [ -z "$gh_qpr_labels" ]; then
+    echo "current pr labels is empty"
+    gh pr create -f --base $branch
+else
     echo "current pr labels: $gh_qpr_labels"
     gh pr create -f --base $branch -l "$gh_qpr_labels"
-else
-    gh pr create -f --base $branch
 fi
 
 echo "start gh merge..."
