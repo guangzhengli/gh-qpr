@@ -12,7 +12,7 @@ echo "Generate a rondom branch name: $branch_name"
 echo "git create a new branch...: $branch_name"
 git checkout -b $branch_name
 
-echo "gh create a new pull requestion with label migration and need review..."
+echo "gh create a new pull requestion with label..."
 
 if [ -z "$gh_qpr_labels" ]; then
     echo "current pr labels is empty"
